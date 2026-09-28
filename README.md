@@ -4,7 +4,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com)
 [![Accuracy](https://img.shields.io/badge/Model%20Accuracy-98.91%25-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)]()
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/csuji2006-stack/spam)
 
 SpamShield AI is a state-of-the-art multi-channel AI spam, smishing, phishing, and malicious URL detection platform. Combining **calibrated machine learning ensembles (TF-IDF + MultinomialNB + LogisticRegression)** with **deep rule-based cyber intelligence heuristics**, SpamShield delivers sub-5ms real-time threat verdicts with **Explainable AI (XAI) token heatmaps**.
 
