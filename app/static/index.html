@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpamShield AI - Enterprise AI Spam & Threat Defense Platform</title>
+  <meta name="description" content="Next-generation multi-channel AI spam, phishing, smishing, and malicious URL detection system powered by ensemble machine learning and explainable cyber intelligence.">
+  <meta name="keywords" content="AI spam detection, phishing scanner, smishing detector, email spam filter, cyber threat intelligence, machine learning security">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="/static/favicon.svg" alt="SpamShield AI Logo" class="brand-icon">
+      <span class="brand-text">SpamShield AI</span>
+      <span class="brand-badge">v1.0 Pro</span>
+    </a>
+
+    <div class="nav-status">
+      <span class="pulse-dot"></span>
+      <span id="navStatusText">Engine Operational • 98.9% Accuracy • 3.8ms Latency</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="/docs" target="_blank" class="btn-nav" id="navApiDocs">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        Swagger Docs
+      </a>
+      <a href="#playground" class="btn-nav" onclick="switchTab('tab-api')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        API Playground
+      </a>
+    </div>
+  </nav>
+
+  <!-- ================= Hero Section ================= -->
+  <header class="hero">
+    <div class="hero-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      Ensemble NLP & Explainable Cyber Intelligence
+    </div>
+    <h1 class="hero-title">
+      Intelligent Threat Defense Against <br>
+      <span class="gradient-text">Spam, Phishing & Fraud</span>
+    </h1>
+    <p class="hero-desc">
+      Protect communications across emails, SMS smishing, social comment bots, and malicious URLs with sub-5ms real-time AI classification and explainable red-flag heatmaps.
+    </p>
+
+    <!-- Key Metrics Ribbon -->
+    <div class="metrics-strip">
+      <div class="metric-box">
+        <div class="metric-val" id="metricAccuracy">98.91%</div>
+        <div class="metric-label">Model Accuracy</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val" id="metricLatency">&lt; 4ms</div>
+        <div class="metric-label">Inference Latency</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val" id="metricScans">1,420+</div>
+        <div class="metric-label">Threats Analyzed</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val" id="metricBlocked">99.4%</div>
+        <div class="metric-label">Spam Intercept Rate</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= Main Security Hub ================= -->
+  <main class="tabs-container">
+    <nav class="tabs-nav" role="tablist">
+      <button class="tab-btn active" role="tab" id="tabBtnMsg" onclick="switchTab('tab-msg')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Message & Email Scanner
+      </button>
+      <button class="tab-btn" role="tab" id="tabBtnUrl" onclick="switchTab('tab-url')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        Phishing URL Inspector
+      </button>
+      <button class="tab-btn" role="tab" id="tabBtnBatch" onclick="switchTab('tab-batch')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+        Bulk Batch Scanner
+      </button>
+      <button class="tab-btn" role="tab" id="tabBtnStats" onclick="switchTab('tab-stats')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        Threat Telemetry
+      </button>
+      <button class="tab-btn" role="tab" id="tabBtnApi" onclick="switchTab('tab-api')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        API & Webhooks
+      </button>
+    </nav>
+
+    <!-- ================= TAB 1: Single Message Inspector ================= -->
+    <section id="tab-msg" class="tab-content active">
+      <div class="workspace-grid">
+        
+        <!-- Left Panel: Input -->
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Message Content Analyzer
+            </h2>
+            <span class="brand-badge">Real-Time NLP</span>
+          </div>
+
+          <!-- Channel Selection -->
+          <div class="channel-selector" id="channelSelector">
+            <button class="channel-btn active" data-channel="auto" onclick="setChannel('auto', this)">Auto-Detect</button>
+            <button class="channel-btn" data-channel="email" onclick="setChannel('email', this)">Email / Phishing</button>
+            <button class="channel-btn" data-channel="sms" onclick="setChannel('sms', this)">SMS / Smishing</button>
+            <button class="channel-btn" data-channel="social" onclick="setChannel('social', this)">Social & Bot Spam</button>
+          </div>
+
+          <!-- Attack Presets Strip -->
+          <div class="preset-strip">
+            <div class="preset-title">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Quick Test Attack Scenarios
+            </div>
+            <div class="preset-buttons">
+              <button class="preset-chip threat" onclick="loadPreset('paypal')">🚨 PayPal Restriction Phish</button>
+              <button class="preset-chip threat" onclick="loadPreset('usps')">📦 USPS Delivery Smish</button>
+              <button class="preset-chip threat" onclick="loadPreset('crypto')">💰 Crypto 500% ROI Scam</button>
+              <button class="preset-chip threat" onclick="loadPreset('lottery')">🏆 $2.5M Oil Inheritance</button>
+              <button class="preset-chip safe" onclick="loadPreset('work_email')">💼 Legitimate Team Update</button>
+              <button class="preset-chip safe" onclick="loadPreset('doctor_sms')">📱 Legitimate Clinic SMS</button>
+            </div>
+          </div>
+
+          <!-- Textarea Input -->
+          <div class="textarea-wrapper">
+            <textarea id="messageInput" class="cyber-textarea" placeholder="Paste or type suspicious email body, SMS text, direct message, or comment to inspect..." oninput="updateCharCount()"></textarea>
+            <div class="textarea-footer">
+              <span id="charCount">0 characters • 0 words</span>
+              <span>Input sanitized & evaluated locally</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-row">
+            <button id="btnScanMessage" class="btn-primary" onclick="scanMessage()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Scan & Neutralize Threat
+            </button>
+            <button class="btn-secondary" onclick="clearMessage()">Clear</button>
+          </div>
+        </div>
+
+        <!-- Right Panel: XAI Results -->
+        <div class="card-panel" id="resultsPanel">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Threat Assessment & Explainability
+            </h2>
+            <span id="scanLatency" class="brand-badge" style="display: none;">0.0ms</span>
+          </div>
+
+          <!-- Empty State -->
+          <div id="resultsEmpty" class="empty-state">
+            <div class="empty-icon">🛡️</div>
+            <div class="empty-text">Select a preset scenario or paste a message on the left to run threat classification and view explainable red-flag tokens.</div>
+          </div>
+
+          <!-- Live Results Content -->
+          <div id="resultsContent" class="results-content">
+            
+            <!-- Verdict Banner -->
+            <div id="verdictBanner" class="verdict-banner danger">
+              <div class="verdict-left">
+                <span id="verdictIcon" class="verdict-icon">🚨</span>
+                <div>
+                  <div id="verdictTitle" class="verdict-title">MALICIOUS SPAM DETECTED</div>
+                  <div id="verdictCategory" class="verdict-category">PHISHING_CREDENTIAL_THEFT</div>
+                </div>
+              </div>
+              <div class="verdict-score">
+                <div id="verdictScore" class="score-num">94%</div>
+                <div class="score-sub">Threat Index</div>
+              </div>
+            </div>
+
+            <!-- Risk Progress Bar -->
+            <div class="risk-bar-container">
+              <div class="risk-bar-label">
+                <span>Composite Risk Probability</span>
+                <span id="riskProbabilityText">0.9400</span>
+              </div>
+              <div class="risk-track">
+                <div id="riskBarFill" class="risk-fill" style="width: 94%; background: var(--status-critical);"></div>
+              </div>
+            </div>
+
+            <!-- Multi-factor Threat Factor Grid -->
+            <div class="threat-grid">
+              <div class="threat-item">
+                <div id="metricMlProb" class="threat-val" style="color: #60a5fa;">92%</div>
+                <div class="threat-lbl">ML Model</div>
+              </div>
+              <div class="threat-item">
+                <div id="metricHeuristic" class="threat-val" style="color: #f87171;">96%</div>
+                <div class="threat-lbl">Heuristic Index</div>
+              </div>
+              <div class="threat-item">
+                <div id="metricUrgency" class="threat-val" style="color: #fbbf24;">85%</div>
+                <div class="threat-lbl">Urgency Lure</div>
+              </div>
+              <div class="threat-item">
+                <div id="metricLinks" class="threat-val" style="color: #c084fc;">100%</div>
+                <div class="threat-lbl">Domain Risk</div>
+              </div>
+            </div>
+
+            <!-- XAI Token Highlight Box -->
+            <div class="xai-section">
+              <div class="section-subtitle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Explainable Threat Heatmap (Detected Red Flags Highlighted)
+              </div>
+              <div id="highlightedContainer" class="highlighted-box">
+                <!-- Highlighted HTML dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Identified Red Flags List -->
+            <div class="xai-section">
+              <div class="section-subtitle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                Detailed Threat Signatures Detected (<span id="flagsCount">0</span>)
+              </div>
+              <div id="redFlagsList" class="flags-list">
+                <!-- Red flag cards -->
+              </div>
+            </div>
+
+            <!-- Recommended Actions -->
+            <div class="xai-section">
+              <div class="section-subtitle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                Recommended Security Actions
+              </div>
+              <ul id="recommendationsList" class="recs-list">
+                <!-- Dynamic recommendations -->
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: Phishing URL Inspector ================= -->
+    <section id="tab-url" class="tab-content">
+      <div class="workspace-grid">
+        
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              URL Threat & Phishing Inspector
+            </h2>
+            <span class="brand-badge">Domain Forensics</span>
+          </div>
+
+          <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 16px;">
+            Inspect suspicious links before clicking. Analyzes host IP masking, high-abuse TLDs, brand typosquatting, credential lures in path, and punycode attacks.
+          </p>
+
+          <div class="preset-strip">
+            <div class="preset-title">Test Example URLs</div>
+            <div class="preset-buttons">
+              <button class="preset-chip threat" onclick="loadUrlPreset('paypal_phish')">🚨 Fake PayPal Login (.xyz)</button>
+              <button class="preset-chip threat" onclick="loadUrlPreset('chase_auth')">🚨 Spoofed Chase Portal (.top)</button>
+              <button class="preset-chip threat" onclick="loadUrlPreset('ip_host')">🚨 Numeric IP Host Phish</button>
+              <button class="preset-chip safe" onclick="loadUrlPreset('github_safe')">✅ GitHub Official (Safe)</button>
+            </div>
+          </div>
+
+          <input type="text" id="urlInput" class="cyber-input" placeholder="e.g. http://paypal-security-update.xyz/login">
+
+          <div class="action-row">
+            <button id="btnScanUrl" class="btn-primary" onclick="scanUrl()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Inspect URL Risk
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('urlInput').value = ''">Clear</button>
+          </div>
+        </div>
+
+        <!-- URL Result Panel -->
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">URL Forensic Breakdown</h2>
+            <span id="urlLatency" class="brand-badge" style="display: none;">0.0ms</span>
+          </div>
+
+          <div id="urlResultsEmpty" class="empty-state">
+            <div class="empty-icon">🔗</div>
+            <div class="empty-text">Enter or paste a URL to inspect domain reputation, SSL encryption, and malicious signatures.</div>
+          </div>
+
+          <div id="urlResultsContent" style="display: none;">
+            <div id="urlVerdictBanner" class="verdict-banner danger">
+              <div class="verdict-left">
+                <span id="urlVerdictIcon" class="verdict-icon">🚨</span>
+                <div>
+                  <div id="urlVerdictTitle" class="verdict-title">SUSPICIOUS URL DETECTED</div>
+                  <div id="urlHostDisplay" class="verdict-category" style="font-family: var(--font-mono);">paypal-fake.xyz</div>
+                </div>
+              </div>
+              <div class="verdict-score">
+                <div id="urlRiskScore" class="score-num">85%</div>
+                <div class="score-sub">Risk Score</div>
+              </div>
+            </div>
+
+            <table class="url-checks-table">
+              <thead>
+                <tr>
+                  <th>Security Attribute</th>
+                  <th>Analysis Finding</th>
+                </tr>
+              </thead>
+              <tbody id="urlChecksBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: Bulk Batch File Scanner ================= -->
+    <section id="tab-batch" class="tab-content">
+      <div class="card-panel" style="margin-bottom: 24px;">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Bulk Dataset / CSV Batch Scanner
+          </h2>
+          <button class="btn-secondary" onclick="downloadSampleCsv()" style="font-size: 0.78rem; padding: 6px 12px;">
+            📥 Download Sample CSV
+          </button>
+        </div>
+
+        <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 20px;">
+          Process hundreds of emails or SMS messages simultaneously. Upload a <code>.csv</code> file (with a <code>message</code>, <code>text</code>, or <code>email</code> column) or a <code>.txt</code> file with one entry per line.
+        </p>
+
+        <!-- Drag & Drop Zone -->
+        <div id="dropZone" class="drop-zone" onclick="document.getElementById('batchFileInput').click()">
+          <input type="file" id="batchFileInput" accept=".csv,.txt" style="display: none;" onchange="handleFileSelected(event)">
+          <div class="drop-icon">📂</div>
+          <div class="drop-title" id="dropFileName">Click or Drag & Drop CSV / TXT File Here</div>
+          <div class="drop-desc">Maximum 500 rows per batch • Evaluated in parallel</div>
+        </div>
+
+        <div class="action-row" style="margin-top: 18px;">
+          <button id="btnStartBatch" class="btn-primary" onclick="uploadAndProcessBatch()" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Start Bulk AI Scan
+          </button>
+        </div>
+
+        <!-- Batch Results Display -->
+        <div id="batchResultsWrapper" style="display: none; margin-top: 24px;">
+          <div class="batch-stats-strip">
+            <div class="batch-stat-card">
+              <div id="batchTotal" class="batch-stat-val" style="color: #ffffff;">0</div>
+              <div class="metric-label">Total Messages</div>
+            </div>
+            <div class="batch-stat-card">
+              <div id="batchSpamCount" class="batch-stat-val" style="color: var(--status-critical);">0</div>
+              <div class="metric-label">Spam Blocked</div>
+            </div>
+            <div class="batch-stat-card">
+              <div id="batchHamCount" class="batch-stat-val" style="color: var(--status-safe);">0</div>
+              <div class="metric-label">Ham Legitimate</div>
+            </div>
+            <div class="batch-stat-card">
+              <div id="batchSpamRate" class="batch-stat-val" style="color: var(--accent-cyan);">0%</div>
+              <div class="metric-label">Spam Rate</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <div style="display: flex; gap: 8px;">
+              <button class="channel-btn active" onclick="filterBatchTable('all', this)">All Records</button>
+              <button class="channel-btn" onclick="filterBatchTable('spam', this)">Spam Only</button>
+              <button class="channel-btn" onclick="filterBatchTable('ham', this)">Safe Only</button>
+            </div>
+            <button class="btn-secondary" onclick="exportBatchCsv()" style="font-size: 0.78rem; padding: 6px 12px;">
+              💾 Export Filtered CSV
+            </button>
+          </div>
+
+          <div class="batch-table-container">
+            <table class="batch-table">
+              <thead>
+                <tr>
+                  <th style="width: 50px;">#</th>
+                  <th>Message Preview</th>
+                  <th style="width: 110px;">Classification</th>
+                  <th style="width: 80px;">Risk</th>
+                  <th style="width: 170px;">Category</th>
+                </tr>
+              </thead>
+              <tbody id="batchTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: Threat Telemetry ================= -->
+    <section id="tab-stats" class="tab-content">
+      <div class="telemetry-grid">
+        
+        <div class="chart-card">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+              Attack Vectors Distribution
+            </h2>
+            <button class="btn-secondary" onclick="refreshTelemetry()" style="font-size: 0.72rem; padding: 4px 8px;">Refresh</button>
+          </div>
+          <div id="categoryBarsContainer">
+            <!-- Dynamic Category Breakdown Bars -->
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Engine Health & Telemetry
+            </h2>
+            <span class="brand-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: #059669;">LIVE</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+            <div class="metric-box" style="text-align: left; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Active ML Architecture</div>
+                <div style="font-weight: 700; color: #ffffff;">TF-IDF + Soft-Voting (MultinomialNB & LogisticRegression)</div>
+              </div>
+              <span class="brand-badge">ENSEMBLE</span>
+            </div>
+
+            <div class="metric-box" style="text-align: left; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Cyber Heuristics Engine</div>
+                <div style="font-weight: 700; color: #ffffff;">Spoofed TLDs, Punycode, Financial Lures, Urgency Vectors</div>
+              </div>
+              <span class="brand-badge">RULES v2.4</span>
+            </div>
+
+            <div class="metric-box" style="text-align: left; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">System Uptime</div>
+                <div id="telemetryUptime" style="font-weight: 700; color: #34d399;">Active</div>
+              </div>
+              <span class="brand-badge" style="color: #34d399;">STABLE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: Developer API Playground ================= -->
+    <section id="tab-api" class="tab-content">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Developer REST API & Webhooks Playground
+          </h2>
+          <a href="/docs" target="_blank" class="btn-secondary" style="font-size: 0.78rem; padding: 6px 12px; text-decoration: none;">
+            Interactive Swagger Docs ↗
+          </a>
+        </div>
+
+        <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 20px;">
+          Integrate real-time spam scoring into email gateways, SMS verification flows, checkout pages, or community moderation bots.
+        </p>
+
+        <div class="code-playground">
+          <div class="code-header">
+            <div class="code-tabs">
+              <button class="code-tab-btn active" onclick="switchCodeSnippet('curl', this)">cURL</button>
+              <button class="code-tab-btn" onclick="switchCodeSnippet('python', this)">Python</button>
+              <button class="code-tab-btn" onclick="switchCodeSnippet('javascript', this)">JavaScript</button>
+              <button class="code-tab-btn" onclick="switchCodeSnippet('nodejs', this)">Node.js</button>
+            </div>
+            <button class="btn-copy" onclick="copyActiveCodeSnippet()">Copy Snippet</button>
+          </div>
+          <pre id="codeSnippetDisplay" class="code-block"></pre>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 12px; align-items: center;">
+          <button class="btn-primary" onclick="testLiveApiCall()" style="flex: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Test Live API Request
+          </button>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Sends sample request to <code>POST /api/scan</code></span>
+        </div>
+
+        <!-- Live API Response Preview -->
+        <div id="apiResponseWrapper" style="display: none; margin-top: 20px;">
+          <div class="section-subtitle">Live API Response JSON:</div>
+          <pre id="apiResponseDisplay" class="highlighted-box" style="font-family: var(--font-mono); font-size: 0.78rem; max-height: 240px;"></pre>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/docs" target="_blank" class="footer-link">Swagger OpenAPI Specs</a>
+      <a href="/redoc" target="_blank" class="footer-link">ReDoc Documentation</a>
+      <a href="/api/health" target="_blank" class="footer-link">Health Probe</a>
+      <a href="/api/stats" target="_blank" class="footer-link">Live Telemetry</a>
+    </div>
+    <p>SpamShield AI &bull; Enterprise-grade Threat Classification Engine &bull; Ready for Cloud & Edge Container Deployment</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
